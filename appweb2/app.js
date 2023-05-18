@@ -12,15 +12,55 @@ conexion.connect( function(error){
     console.log('Conexion Exitosa');
   }
 });
-conexion.query('SELECT * from users', function(error,results,fields){
+ //mostrar
+conexion.query('SELECT * from users', function(error,filas){
   if (error) 
     throw error;
 
-    results.forEach(result => {
-      console.log(result);
+    
+
+    filas.forEach(fila => {
+      
+      console.log(fila);
+      
+      
     });
+    /* fields.forEach(field => {
+      console.log(`Nombre del campo: ${field.name}`);
+      console.log(`Tipo de dato: ${field.type}`);
+      console.log(`Longitud: ${field.length}`);
+      // ...
+    }); */
   
 })
+/* // insertar
+conexion.query('INSERT INTO users (user, rol) VALUES ("Juanito6", "Adm"), ("Juanito7", "Adm")', function(error,results){
+  if (error) 
+    throw error;
+    
+    console.log('Registro Agregado',results);
+  
+}); */
+//Actualziar
+/* conexion.query('UPDATE users SET user ="Manuel", rol = "user" WHERE id IN (16, 17)', function(error, filas) {
+  if (error) {
+    throw error;
+  }
+
+  
+    console.log(filas);
+ 
+}); */
+//ELIMINAR
+/* conexion.query('DELETE FROM users WHERE id= 11',function(error,results){
+if (error) 
+  throw error;
+  console.log('Regisyro ELimado',results);
+
+}); */
+
+
+
 conexion.end();
 
 var createError = require('http-errors');
