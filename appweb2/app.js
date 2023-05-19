@@ -13,7 +13,7 @@ conexion.connect( function(error){
   }
 });
  //mostrar
-conexion.query('SELECT * from users', function(error,filas){
+/* conexion.query('SELECT * from users', function(error,filas){
   if (error) 
     throw error;
 
@@ -24,7 +24,7 @@ conexion.query('SELECT * from users', function(error,filas){
       console.log(fila);
       
       
-    });
+    }); */
     /* fields.forEach(field => {
       console.log(`Nombre del campo: ${field.name}`);
       console.log(`Tipo de dato: ${field.type}`);
@@ -32,7 +32,7 @@ conexion.query('SELECT * from users', function(error,filas){
       // ...
     }); */
   
-})
+
 /* // insertar
 conexion.query('INSERT INTO users (user, rol) VALUES ("Juanito6", "Adm"), ("Juanito7", "Adm")', function(error,results){
   if (error) 
@@ -50,18 +50,27 @@ conexion.query('INSERT INTO users (user, rol) VALUES ("Juanito6", "Adm"), ("Juan
   
     console.log(filas);
  
-}); */
+});/*  */
 //ELIMINAR
-/* conexion.query('DELETE FROM users WHERE id= 11',function(error,results){
+/* conexion.query('DELETE FROM users WHERE id= 1',function(error,results){
 if (error) 
   throw error;
   console.log('Regisyro ELimado',results);
 
-}); */
-
+});  */
+ 
 
 
 conexion.end();
+
+const keys = require('./settings/keys');
+app.set('key',keys.key);
+app.use(express.urlencoded({extended:false}));
+app.use(express.json);
+
+app.get('/',(req,res)=>{
+  res.send('HOLA MUNDO')
+});
 
 var createError = require('http-errors');
 var express = require('express');
@@ -71,6 +80,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const exp = require('constants');
 
 var app = express();
 
